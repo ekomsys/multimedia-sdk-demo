@@ -307,11 +307,6 @@
       MsgBox(msg)
       Return
     End If
-
-    If renderingDevices.Text.Contains("Desktop") Then
-      renderer.showDesktopWindowRenderer(100, 100)
-    End If
-
   End Sub
 
   Private Sub stopRenderingDevice_Click(sender As Object, e As EventArgs) Handles stopRenderingDevice.Click

@@ -36,6 +36,7 @@ Partial Class LicenseForm
     Me.PasswordTextBox = New System.Windows.Forms.TextBox()
     Me.OK = New System.Windows.Forms.Button()
     Me.Cancel = New System.Windows.Forms.Button()
+    Me.Label1 = New System.Windows.Forms.Label()
     CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
@@ -98,6 +99,15 @@ Partial Class LicenseForm
     Me.Cancel.TabIndex = 5
     Me.Cancel.Text = "&Cancel"
     '
+    'Label1
+    '
+    Me.Label1.AutoSize = True
+    Me.Label1.Location = New System.Drawing.Point(219, 133)
+    Me.Label1.Name = "Label1"
+    Me.Label1.Size = New System.Drawing.Size(175, 13)
+    Me.Label1.TabIndex = 6
+    Me.Label1.Text = "Press cancel to start in demo mode."
+    '
     'LicenseForm
     '
     Me.AcceptButton = Me.OK
@@ -105,6 +115,7 @@ Partial Class LicenseForm
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
     Me.CancelButton = Me.Cancel
     Me.ClientSize = New System.Drawing.Size(401, 192)
+    Me.Controls.Add(Me.Label1)
     Me.Controls.Add(Me.Cancel)
     Me.Controls.Add(Me.OK)
     Me.Controls.Add(Me.PasswordTextBox)
@@ -126,5 +137,6 @@ Partial Class LicenseForm
   End Sub
 
     Public WithEvents UsernameTextBox As TextBox
-    Public WithEvents PasswordTextBox As TextBox
+  Public WithEvents PasswordTextBox As TextBox
+  Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

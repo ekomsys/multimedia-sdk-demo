@@ -83,35 +83,76 @@
 
     Me.WindowState = FormWindowState.Maximized
   End Sub
-  Private Sub populateDeviceInfo(dvc As String)
-    Dim portLst
-    Dim desc
+    Private Sub populateDeviceInfo(dvc As String)
+        Dim portLst
+        Dim desc
 
-    retErr = renderer.getDeviceInfo(dvc, portLst, desc)
-    If retErr Then
-      Dim msg As String
-      msg = "Unable to get device info" & Constants.vbCrLf & "Details: " & renderer.getErrorDescription(retErr)
-      MsgBox(msg)
-      Return
-    End If
+        retErr = renderer.getDeviceInfo(dvc, portLst, desc)
+        If retErr Then
+            Dim msg As String
+            msg = "Unable to get device info" & Constants.vbCrLf & "Details: " & renderer.getErrorDescription(retErr)
+            MsgBox(msg)
+            Return
+        End If
 
-    deviceConnection.Items.Clear()
-    For i = LBound(portLst) To UBound(portLst)
-      deviceConnection.Items.Add(portLst(i))
-    Next
+        deviceConnection.Items.Clear()
+        For i = LBound(portLst) To UBound(portLst)
+            deviceConnection.Items.Add(portLst(i))
+        Next
 
-    deviceConnection.SelectedIndex = 0
-    deviceConnection.Update()
+        deviceConnection.SelectedIndex = 0
+        deviceConnection.Update()
 
-    If dvc.Contains("Desktop") Then
-      deviceConnection.Items.Clear()
-      deviceConnection.Update()
-      deviceConnection.Enabled = False
-    Else
-      deviceConnection.Enabled = True
-    End If
-  End Sub
-  Private Sub getOutputDevices()
+        If dvc.Contains("Desktop") Then
+            deviceConnection.Items.Clear()
+            deviceConnection.Update()
+            deviceConnection.Enabled = False
+        Else
+            deviceConnection.Enabled = True
+        End If
+    End Sub
+    Private Sub populateLiveDeviceInfo(dvc As String)
+        Dim portLst, audioPortLst
+        Dim desc
+
+        retErr = live.getDeviceInfo(dvc, portLst, audioPortLst, desc)
+        If retErr Then
+            Dim msg As String
+            msg = "Unable to get device info" & Constants.vbCrLf & "Details: " & renderer.getErrorDescription(retErr)
+            MsgBox(msg)
+            Return
+        End If
+
+        liveVideoConnection.Items.Clear()
+        For i = LBound(portLst) To UBound(portLst)
+            liveVideoConnection.Items.Add(portLst(i))
+        Next
+
+        liveVideoConnection.SelectedIndex = 0
+        liveVideoConnection.Update()
+
+
+
+        liveAudioConnection.Items.Clear()
+        For i = LBound(audioPortLst) To UBound(audioPortLst)
+            liveAudioConnection.Items.Add(audioPortLst(i))
+        Next
+
+        If dvc.Contains("player") Then
+            liveVideoConnection.Items.Clear()
+            liveVideoConnection.Update()
+            liveVideoConnection.Enabled = False
+
+            liveAudioConnection.Items.Clear()
+            liveAudioConnection.Update()
+            liveAudioConnection.Enabled = False
+        Else
+            liveVideoConnection.Enabled = True
+            liveAudioConnection.Enabled = True
+        End If
+
+    End Sub
+    Private Sub getOutputDevices()
     Dim lstDevices
     retErr = renderer.getDeviceList(lstDevices)
     If retErr Then
@@ -577,9 +618,24 @@
   End Sub
 
   Private Sub StartLive_Click(sender As Object, e As EventArgs) Handles StartLive.Click
-    If LiveDevicesList.Text.Contains("Player") Then
-      InitLiveMediaPlayer(LiveDevicesList.Text)
-    End If
+        If LiveDevicesList.Text.Contains("Player") Then
+            InitLiveMediaPlayer(LiveDevicesList.Text)
+        Else
+            retErr = live.initDevice(LiveDevicesList.Text, liveVideoConnection.Text, liveAudioConnection.Text)
+            If retErr Then
+                Dim msg As String
+                msg = "Unable to initialize live device" & Constants.vbCrLf & "Details: " & renderer.getErrorDescription(retErr)
+                MsgBox(msg)
+                Return
+            End If
+            retErr = live.startDevice(LiveDevicesList.Text)
+            If retErr Then
+                Dim msg As String
+                msg = "Unable to start live device" & Constants.vbCrLf & "Details: " & renderer.getErrorDescription(retErr)
+                MsgBox(msg)
+                Return
+            End If
+        End If
     RefreshPreviewSources()
     UpdateHelp("If you did not got any error message, you now have a live device online. " &
     "It is now available in Sources list so that you " &
@@ -972,4 +1028,8 @@
 
     RefreshPreviewSources()
   End Sub
+
+    Private Sub LiveDevicesList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles LiveDevicesList.SelectedIndexChanged
+        populateLiveDeviceInfo(LiveDevicesList.Text)
+    End Sub
 End Class

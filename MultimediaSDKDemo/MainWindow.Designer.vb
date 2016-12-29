@@ -96,6 +96,8 @@ Partial Class MainWindow
         Me.Label7 = New System.Windows.Forms.Label()
         Me.LogWindow = New System.Windows.Forms.ListBox()
         Me.PlaylistTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.liveVideoConnection = New System.Windows.Forms.ComboBox()
+        Me.liveAudioConnection = New System.Windows.Forms.ComboBox()
         Me.biggerPreview.SuspendLayout()
         CType(Me.LiveDeviceThree, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LiveDeviceTwo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -550,6 +552,8 @@ Partial Class MainWindow
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.liveAudioConnection)
+        Me.GroupBox5.Controls.Add(Me.liveVideoConnection)
         Me.GroupBox5.Controls.Add(Me.StopLive)
         Me.GroupBox5.Controls.Add(Me.StartLive)
         Me.GroupBox5.Controls.Add(Me.LiveDevicesList)
@@ -562,7 +566,7 @@ Partial Class MainWindow
         '
         'StopLive
         '
-        Me.StopLive.Location = New System.Drawing.Point(142, 120)
+        Me.StopLive.Location = New System.Drawing.Point(142, 169)
         Me.StopLive.Name = "StopLive"
         Me.StopLive.Size = New System.Drawing.Size(109, 23)
         Me.StopLive.TabIndex = 7
@@ -571,7 +575,7 @@ Partial Class MainWindow
         '
         'StartLive
         '
-        Me.StartLive.Location = New System.Drawing.Point(9, 118)
+        Me.StartLive.Location = New System.Drawing.Point(9, 169)
         Me.StartLive.Name = "StartLive"
         Me.StartLive.Size = New System.Drawing.Size(109, 23)
         Me.StartLive.TabIndex = 6
@@ -795,6 +799,22 @@ Partial Class MainWindow
         '
         Me.PlaylistTimer.Interval = 1000
         '
+        'liveVideoConnection
+        '
+        Me.liveVideoConnection.FormattingEnabled = True
+        Me.liveVideoConnection.Location = New System.Drawing.Point(9, 115)
+        Me.liveVideoConnection.Name = "liveVideoConnection"
+        Me.liveVideoConnection.Size = New System.Drawing.Size(109, 21)
+        Me.liveVideoConnection.TabIndex = 8
+        '
+        'liveAudioConnection
+        '
+        Me.liveAudioConnection.FormattingEnabled = True
+        Me.liveAudioConnection.Location = New System.Drawing.Point(142, 115)
+        Me.liveAudioConnection.Name = "liveAudioConnection"
+        Me.liveAudioConnection.Size = New System.Drawing.Size(109, 21)
+        Me.liveAudioConnection.TabIndex = 9
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -933,4 +953,6 @@ Partial Class MainWindow
     Friend WithEvents PlaylistTimer As Timer
     Friend WithEvents Label8 As Label
     Friend WithEvents PlaylistTimeLabel As Label
+    Friend WithEvents liveAudioConnection As ComboBox
+    Friend WithEvents liveVideoConnection As ComboBox
 End Class

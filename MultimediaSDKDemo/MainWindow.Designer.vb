@@ -25,16 +25,9 @@ Partial Class MainWindow
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainWindow))
         Me.biggerPreview = New System.Windows.Forms.Panel()
-        Me.LiveDeviceThree = New System.Windows.Forms.PictureBox()
-        Me.LiveDeviceTwo = New System.Windows.Forms.PictureBox()
-        Me.LiveDeviceOne = New System.Windows.Forms.PictureBox()
         Me.smallPreviewOne = New System.Windows.Forms.Panel()
         Me.smallPreviewTwo = New System.Windows.Forms.Panel()
-        Me.previewOneSelector = New System.Windows.Forms.ComboBox()
-        Me.previewTwoSelector = New System.Windows.Forms.ComboBox()
-        Me.biggerPreviewSelector = New System.Windows.Forms.ComboBox()
         Me.smallPreviewThree = New System.Windows.Forms.Panel()
-        Me.previewThreeSelector = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.LiveServerIndicator = New System.Windows.Forms.PictureBox()
@@ -46,9 +39,9 @@ Partial Class MainWindow
         Me.RenderingServerIndicator = New System.Windows.Forms.PictureBox()
         Me.BootSystem = New System.Windows.Forms.Button()
         Me.OutputFormatList = New System.Windows.Forms.ComboBox()
-        Me.getFormats = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.deviceConnection = New System.Windows.Forms.ComboBox()
+        Me.renderingDeviceVideoHwList = New System.Windows.Forms.ComboBox()
+        Me.renderingDeviceAudioHwList = New System.Windows.Forms.ComboBox()
         Me.stopRenderingDevice = New System.Windows.Forms.Button()
         Me.startRenderingDevice = New System.Windows.Forms.Button()
         Me.renderingDevices = New System.Windows.Forms.ComboBox()
@@ -68,11 +61,10 @@ Partial Class MainWindow
         Me.Label4 = New System.Windows.Forms.Label()
         Me.CGPlayingAnimations = New System.Windows.Forms.ListView()
         Me.CGAvailableAnimations = New System.Windows.Forms.ListView()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.StopLive = New System.Windows.Forms.Button()
-        Me.StartLive = New System.Windows.Forms.Button()
-        Me.LiveDevicesList = New System.Windows.Forms.ComboBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.liveDeviceModeList = New System.Windows.Forms.ComboBox()
+        Me.liveDeviceVideoHwList = New System.Windows.Forms.ComboBox()
+        Me.liveDeviceAudioHwList = New System.Windows.Forms.ComboBox()
         Me.RefreshSources = New System.Windows.Forms.Button()
         Me.StopSource = New System.Windows.Forms.Button()
         Me.StartSource = New System.Windows.Forms.Button()
@@ -96,12 +88,10 @@ Partial Class MainWindow
         Me.Label7 = New System.Windows.Forms.Label()
         Me.LogWindow = New System.Windows.Forms.ListBox()
         Me.PlaylistTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.liveVideoConnection = New System.Windows.Forms.ComboBox()
-        Me.liveAudioConnection = New System.Windows.Forms.ComboBox()
-        Me.biggerPreview.SuspendLayout()
-        CType(Me.LiveDeviceThree, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LiveDeviceTwo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LiveDeviceOne, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.LiveServerIndicator, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CGServerIndicator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,7 +100,6 @@ Partial Class MainWindow
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         CType(Me.previewOneVolume, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.previewTwoVolume, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -122,43 +111,10 @@ Partial Class MainWindow
         'biggerPreview
         '
         Me.biggerPreview.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.biggerPreview.Controls.Add(Me.LiveDeviceThree)
-        Me.biggerPreview.Controls.Add(Me.LiveDeviceTwo)
-        Me.biggerPreview.Controls.Add(Me.LiveDeviceOne)
         Me.biggerPreview.Location = New System.Drawing.Point(1025, 27)
         Me.biggerPreview.Name = "biggerPreview"
         Me.biggerPreview.Size = New System.Drawing.Size(877, 574)
         Me.biggerPreview.TabIndex = 0
-        '
-        'LiveDeviceThree
-        '
-        Me.LiveDeviceThree.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.LiveDeviceThree.Location = New System.Drawing.Point(138, 311)
-        Me.LiveDeviceThree.Name = "LiveDeviceThree"
-        Me.LiveDeviceThree.Size = New System.Drawing.Size(242, 183)
-        Me.LiveDeviceThree.TabIndex = 2
-        Me.LiveDeviceThree.TabStop = False
-        Me.LiveDeviceThree.Visible = False
-        '
-        'LiveDeviceTwo
-        '
-        Me.LiveDeviceTwo.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.LiveDeviceTwo.Location = New System.Drawing.Point(420, 118)
-        Me.LiveDeviceTwo.Name = "LiveDeviceTwo"
-        Me.LiveDeviceTwo.Size = New System.Drawing.Size(242, 183)
-        Me.LiveDeviceTwo.TabIndex = 1
-        Me.LiveDeviceTwo.TabStop = False
-        Me.LiveDeviceTwo.Visible = False
-        '
-        'LiveDeviceOne
-        '
-        Me.LiveDeviceOne.BackColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.LiveDeviceOne.Location = New System.Drawing.Point(138, 113)
-        Me.LiveDeviceOne.Name = "LiveDeviceOne"
-        Me.LiveDeviceOne.Size = New System.Drawing.Size(242, 183)
-        Me.LiveDeviceOne.TabIndex = 0
-        Me.LiveDeviceOne.TabStop = False
-        Me.LiveDeviceOne.Visible = False
         '
         'smallPreviewOne
         '
@@ -176,30 +132,6 @@ Partial Class MainWindow
         Me.smallPreviewTwo.Size = New System.Drawing.Size(276, 254)
         Me.smallPreviewTwo.TabIndex = 2
         '
-        'previewOneSelector
-        '
-        Me.previewOneSelector.FormattingEnabled = True
-        Me.previewOneSelector.Location = New System.Drawing.Point(12, 287)
-        Me.previewOneSelector.Name = "previewOneSelector"
-        Me.previewOneSelector.Size = New System.Drawing.Size(276, 21)
-        Me.previewOneSelector.TabIndex = 3
-        '
-        'previewTwoSelector
-        '
-        Me.previewTwoSelector.FormattingEnabled = True
-        Me.previewTwoSelector.Location = New System.Drawing.Point(360, 287)
-        Me.previewTwoSelector.Name = "previewTwoSelector"
-        Me.previewTwoSelector.Size = New System.Drawing.Size(276, 21)
-        Me.previewTwoSelector.TabIndex = 4
-        '
-        'biggerPreviewSelector
-        '
-        Me.biggerPreviewSelector.FormattingEnabled = True
-        Me.biggerPreviewSelector.Location = New System.Drawing.Point(1602, 616)
-        Me.biggerPreviewSelector.Name = "biggerPreviewSelector"
-        Me.biggerPreviewSelector.Size = New System.Drawing.Size(300, 21)
-        Me.biggerPreviewSelector.TabIndex = 5
-        '
         'smallPreviewThree
         '
         Me.smallPreviewThree.BackColor = System.Drawing.SystemColors.ActiveCaptionText
@@ -207,14 +139,6 @@ Partial Class MainWindow
         Me.smallPreviewThree.Name = "smallPreviewThree"
         Me.smallPreviewThree.Size = New System.Drawing.Size(276, 254)
         Me.smallPreviewThree.TabIndex = 2
-        '
-        'previewThreeSelector
-        '
-        Me.previewThreeSelector.FormattingEnabled = True
-        Me.previewThreeSelector.Location = New System.Drawing.Point(707, 287)
-        Me.previewThreeSelector.Name = "previewThreeSelector"
-        Me.previewThreeSelector.Size = New System.Drawing.Size(276, 21)
-        Me.previewThreeSelector.TabIndex = 6
         '
         'GroupBox1
         '
@@ -228,7 +152,6 @@ Partial Class MainWindow
         Me.GroupBox1.Controls.Add(Me.RenderingServerIndicator)
         Me.GroupBox1.Controls.Add(Me.BootSystem)
         Me.GroupBox1.Controls.Add(Me.OutputFormatList)
-        Me.GroupBox1.Controls.Add(Me.getFormats)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 363)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(358, 158)
@@ -328,23 +251,16 @@ Partial Class MainWindow
         'OutputFormatList
         '
         Me.OutputFormatList.FormattingEnabled = True
+        Me.OutputFormatList.Items.AddRange(New Object() {"PAL", "NTSC", "HD 720p 60", "HD 1080p 24", "HD 1080i 59.94"})
         Me.OutputFormatList.Location = New System.Drawing.Point(21, 41)
         Me.OutputFormatList.Name = "OutputFormatList"
-        Me.OutputFormatList.Size = New System.Drawing.Size(169, 21)
+        Me.OutputFormatList.Size = New System.Drawing.Size(300, 21)
         Me.OutputFormatList.TabIndex = 1
-        '
-        'getFormats
-        '
-        Me.getFormats.Location = New System.Drawing.Point(212, 41)
-        Me.getFormats.Name = "getFormats"
-        Me.getFormats.Size = New System.Drawing.Size(109, 23)
-        Me.getFormats.TabIndex = 0
-        Me.getFormats.Text = "Get Formats"
-        Me.getFormats.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.deviceConnection)
+        Me.GroupBox2.Controls.Add(Me.renderingDeviceVideoHwList)
+        Me.GroupBox2.Controls.Add(Me.renderingDeviceAudioHwList)
         Me.GroupBox2.Controls.Add(Me.stopRenderingDevice)
         Me.GroupBox2.Controls.Add(Me.startRenderingDevice)
         Me.GroupBox2.Controls.Add(Me.renderingDevices)
@@ -355,13 +271,21 @@ Partial Class MainWindow
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Output Devices"
         '
-        'deviceConnection
+        'renderingDeviceVideoHwList
         '
-        Me.deviceConnection.FormattingEnabled = True
-        Me.deviceConnection.Location = New System.Drawing.Point(24, 101)
-        Me.deviceConnection.Name = "deviceConnection"
-        Me.deviceConnection.Size = New System.Drawing.Size(154, 21)
-        Me.deviceConnection.TabIndex = 5
+        Me.renderingDeviceVideoHwList.FormattingEnabled = True
+        Me.renderingDeviceVideoHwList.Location = New System.Drawing.Point(24, 116)
+        Me.renderingDeviceVideoHwList.Name = "renderingDeviceVideoHwList"
+        Me.renderingDeviceVideoHwList.Size = New System.Drawing.Size(154, 21)
+        Me.renderingDeviceVideoHwList.TabIndex = 6
+        '
+        'renderingDeviceAudioHwList
+        '
+        Me.renderingDeviceAudioHwList.FormattingEnabled = True
+        Me.renderingDeviceAudioHwList.Location = New System.Drawing.Point(24, 70)
+        Me.renderingDeviceAudioHwList.Name = "renderingDeviceAudioHwList"
+        Me.renderingDeviceAudioHwList.Size = New System.Drawing.Size(154, 21)
+        Me.renderingDeviceAudioHwList.TabIndex = 5
         '
         'stopRenderingDevice
         '
@@ -384,7 +308,7 @@ Partial Class MainWindow
         'renderingDevices
         '
         Me.renderingDevices.FormattingEnabled = True
-        Me.renderingDevices.Location = New System.Drawing.Point(24, 57)
+        Me.renderingDevices.Location = New System.Drawing.Point(24, 28)
         Me.renderingDevices.Name = "renderingDevices"
         Me.renderingDevices.Size = New System.Drawing.Size(154, 21)
         Me.renderingDevices.TabIndex = 3
@@ -550,62 +474,49 @@ Partial Class MainWindow
         Me.CGAvailableAnimations.UseCompatibleStateImageBehavior = False
         Me.CGAvailableAnimations.View = System.Windows.Forms.View.List
         '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.liveAudioConnection)
-        Me.GroupBox5.Controls.Add(Me.liveVideoConnection)
-        Me.GroupBox5.Controls.Add(Me.StopLive)
-        Me.GroupBox5.Controls.Add(Me.StartLive)
-        Me.GroupBox5.Controls.Add(Me.LiveDevicesList)
-        Me.GroupBox5.Location = New System.Drawing.Point(707, 527)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(288, 227)
-        Me.GroupBox5.TabIndex = 13
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Live"
-        '
-        'StopLive
-        '
-        Me.StopLive.Location = New System.Drawing.Point(142, 169)
-        Me.StopLive.Name = "StopLive"
-        Me.StopLive.Size = New System.Drawing.Size(109, 23)
-        Me.StopLive.TabIndex = 7
-        Me.StopLive.Text = "Stop"
-        Me.StopLive.UseVisualStyleBackColor = True
-        '
-        'StartLive
-        '
-        Me.StartLive.Location = New System.Drawing.Point(9, 169)
-        Me.StartLive.Name = "StartLive"
-        Me.StartLive.Size = New System.Drawing.Size(109, 23)
-        Me.StartLive.TabIndex = 6
-        Me.StartLive.Text = "Start"
-        Me.StartLive.UseVisualStyleBackColor = True
-        '
-        'LiveDevicesList
-        '
-        Me.LiveDevicesList.FormattingEnabled = True
-        Me.LiveDevicesList.Location = New System.Drawing.Point(6, 67)
-        Me.LiveDevicesList.Name = "LiveDevicesList"
-        Me.LiveDevicesList.Size = New System.Drawing.Size(245, 21)
-        Me.LiveDevicesList.TabIndex = 6
-        '
         'GroupBox6
         '
+        Me.GroupBox6.Controls.Add(Me.liveDeviceModeList)
+        Me.GroupBox6.Controls.Add(Me.liveDeviceVideoHwList)
+        Me.GroupBox6.Controls.Add(Me.liveDeviceAudioHwList)
         Me.GroupBox6.Controls.Add(Me.RefreshSources)
         Me.GroupBox6.Controls.Add(Me.StopSource)
         Me.GroupBox6.Controls.Add(Me.StartSource)
         Me.GroupBox6.Controls.Add(Me.SourceList)
         Me.GroupBox6.Location = New System.Drawing.Point(707, 363)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(288, 158)
+        Me.GroupBox6.Size = New System.Drawing.Size(288, 208)
         Me.GroupBox6.TabIndex = 14
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Sources"
         '
+        'liveDeviceModeList
+        '
+        Me.liveDeviceModeList.FormattingEnabled = True
+        Me.liveDeviceModeList.Location = New System.Drawing.Point(6, 65)
+        Me.liveDeviceModeList.Name = "liveDeviceModeList"
+        Me.liveDeviceModeList.Size = New System.Drawing.Size(155, 21)
+        Me.liveDeviceModeList.TabIndex = 13
+        '
+        'liveDeviceVideoHwList
+        '
+        Me.liveDeviceVideoHwList.FormattingEnabled = True
+        Me.liveDeviceVideoHwList.Location = New System.Drawing.Point(6, 127)
+        Me.liveDeviceVideoHwList.Name = "liveDeviceVideoHwList"
+        Me.liveDeviceVideoHwList.Size = New System.Drawing.Size(267, 21)
+        Me.liveDeviceVideoHwList.TabIndex = 12
+        '
+        'liveDeviceAudioHwList
+        '
+        Me.liveDeviceAudioHwList.FormattingEnabled = True
+        Me.liveDeviceAudioHwList.Location = New System.Drawing.Point(6, 100)
+        Me.liveDeviceAudioHwList.Name = "liveDeviceAudioHwList"
+        Me.liveDeviceAudioHwList.Size = New System.Drawing.Size(267, 21)
+        Me.liveDeviceAudioHwList.TabIndex = 7
+        '
         'RefreshSources
         '
-        Me.RefreshSources.Location = New System.Drawing.Point(220, 97)
+        Me.RefreshSources.Location = New System.Drawing.Point(215, 170)
         Me.RefreshSources.Name = "RefreshSources"
         Me.RefreshSources.Size = New System.Drawing.Size(61, 23)
         Me.RefreshSources.TabIndex = 11
@@ -614,7 +525,7 @@ Partial Class MainWindow
         '
         'StopSource
         '
-        Me.StopSource.Location = New System.Drawing.Point(121, 97)
+        Me.StopSource.Location = New System.Drawing.Point(114, 170)
         Me.StopSource.Name = "StopSource"
         Me.StopSource.Size = New System.Drawing.Size(61, 23)
         Me.StopSource.TabIndex = 10
@@ -623,7 +534,7 @@ Partial Class MainWindow
         '
         'StartSource
         '
-        Me.StartSource.Location = New System.Drawing.Point(9, 97)
+        Me.StartSource.Location = New System.Drawing.Point(9, 170)
         Me.StartSource.Name = "StartSource"
         Me.StartSource.Size = New System.Drawing.Size(61, 23)
         Me.StartSource.TabIndex = 8
@@ -633,7 +544,7 @@ Partial Class MainWindow
         'SourceList
         '
         Me.SourceList.FormattingEnabled = True
-        Me.SourceList.Location = New System.Drawing.Point(9, 41)
+        Me.SourceList.Location = New System.Drawing.Point(6, 24)
         Me.SourceList.Name = "SourceList"
         Me.SourceList.Size = New System.Drawing.Size(267, 21)
         Me.SourceList.TabIndex = 9
@@ -672,9 +583,6 @@ Partial Class MainWindow
         'VUMeterTimer
         '
         Me.VUMeterTimer.Interval = 200
-        '
-        'VUMeterDecayTimer
-        '
         '
         'smallPreviewTwoRightChannel
         '
@@ -784,36 +692,59 @@ Partial Class MainWindow
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(243, 13)
         Me.Label7.TabIndex = 29
-        Me.Label7.Text = "Copyright 2016, Ekomsys, LLC , All rights reserved"
+        Me.Label7.Text = "Copyright 2017, Ekomsys, LLC , All rights reserved"
         '
         'LogWindow
         '
         Me.LogWindow.BackColor = System.Drawing.SystemColors.InactiveCaption
+        Me.LogWindow.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LogWindow.ForeColor = System.Drawing.SystemColors.GrayText
         Me.LogWindow.FormattingEnabled = True
+        Me.LogWindow.ItemHeight = 24
         Me.LogWindow.Location = New System.Drawing.Point(1025, 669)
         Me.LogWindow.Name = "LogWindow"
-        Me.LogWindow.Size = New System.Drawing.Size(877, 290)
+        Me.LogWindow.Size = New System.Drawing.Size(877, 268)
         Me.LogWindow.TabIndex = 30
         '
         'PlaylistTimer
         '
         Me.PlaylistTimer.Interval = 1000
         '
-        'liveVideoConnection
+        'Label9
         '
-        Me.liveVideoConnection.FormattingEnabled = True
-        Me.liveVideoConnection.Location = New System.Drawing.Point(9, 115)
-        Me.liveVideoConnection.Name = "liveVideoConnection"
-        Me.liveVideoConnection.Size = New System.Drawing.Size(109, 21)
-        Me.liveVideoConnection.TabIndex = 8
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(12, 288)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(36, 13)
+        Me.Label9.TabIndex = 31
+        Me.Label9.Text = "Player"
         '
-        'liveAudioConnection
+        'Label10
         '
-        Me.liveAudioConnection.FormattingEnabled = True
-        Me.liveAudioConnection.Location = New System.Drawing.Point(142, 115)
-        Me.liveAudioConnection.Name = "liveAudioConnection"
-        Me.liveAudioConnection.Size = New System.Drawing.Size(109, 21)
-        Me.liveAudioConnection.TabIndex = 9
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(357, 288)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(22, 13)
+        Me.Label10.TabIndex = 32
+        Me.Label10.Text = "CG"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(704, 288)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(64, 13)
+        Me.Label11.TabIndex = 33
+        Me.Label11.Text = "Live Device"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(1870, 618)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(32, 13)
+        Me.Label12.TabIndex = 34
+        Me.Label12.Text = "Mixer"
         '
         'MainWindow
         '
@@ -821,6 +752,10 @@ Partial Class MainWindow
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.InactiveCaption
         Me.ClientSize = New System.Drawing.Size(1914, 1009)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.LogWindow)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.PictureBox1)
@@ -838,26 +773,17 @@ Partial Class MainWindow
         Me.Controls.Add(Me.smallPreviewOneLeftChannel)
         Me.Controls.Add(Me.HelpWindow)
         Me.Controls.Add(Me.GroupBox6)
-        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.previewThreeSelector)
         Me.Controls.Add(Me.smallPreviewThree)
-        Me.Controls.Add(Me.biggerPreviewSelector)
-        Me.Controls.Add(Me.previewTwoSelector)
-        Me.Controls.Add(Me.previewOneSelector)
         Me.Controls.Add(Me.smallPreviewTwo)
         Me.Controls.Add(Me.smallPreviewOne)
         Me.Controls.Add(Me.biggerPreview)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "MainWindow"
         Me.Text = "Ekomsys Multimedia SDK Demo"
-        Me.biggerPreview.ResumeLayout(False)
-        CType(Me.LiveDeviceThree, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LiveDeviceTwo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LiveDeviceOne, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.LiveServerIndicator, System.ComponentModel.ISupportInitialize).EndInit()
@@ -869,7 +795,6 @@ Partial Class MainWindow
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         CType(Me.previewOneVolume, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.previewTwoVolume, System.ComponentModel.ISupportInitialize).EndInit()
@@ -884,20 +809,15 @@ Partial Class MainWindow
     Friend WithEvents biggerPreview As Panel
     Friend WithEvents smallPreviewOne As Panel
     Friend WithEvents smallPreviewTwo As Panel
-    Friend WithEvents previewOneSelector As ComboBox
-    Friend WithEvents previewTwoSelector As ComboBox
-    Friend WithEvents biggerPreviewSelector As ComboBox
     Friend WithEvents smallPreviewThree As Panel
-    Friend WithEvents previewThreeSelector As ComboBox
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents getFormats As Button
     Friend WithEvents BootSystem As Button
     Friend WithEvents OutputFormatList As ComboBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents stopRenderingDevice As Button
     Friend WithEvents startRenderingDevice As Button
     Friend WithEvents renderingDevices As ComboBox
-    Friend WithEvents deviceConnection As ComboBox
+    Friend WithEvents renderingDeviceAudioHwList As ComboBox
     Friend WithEvents Label1 As Label
     Friend WithEvents CGServerIndicator As PictureBox
     Friend WithEvents PlayerServerIndicator As PictureBox
@@ -920,18 +840,11 @@ Partial Class MainWindow
     Friend WithEvents CGUnloadAnimation As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents LiveServerIndicator As PictureBox
-    Friend WithEvents GroupBox5 As GroupBox
-    Friend WithEvents LiveDevicesList As ComboBox
-    Friend WithEvents StopLive As Button
-    Friend WithEvents StartLive As Button
     Friend WithEvents GroupBox6 As GroupBox
     Friend WithEvents StopSource As Button
     Friend WithEvents StartSource As Button
     Friend WithEvents SourceList As ComboBox
     Friend WithEvents RefreshSources As Button
-    Friend WithEvents LiveDeviceOne As PictureBox
-    Friend WithEvents LiveDeviceTwo As PictureBox
-    Friend WithEvents LiveDeviceThree As PictureBox
     Friend WithEvents HelpWindow As RichTextBox
     Friend WithEvents smallPreviewOneLeftChannel As ProgressBar
     Friend WithEvents smallPreviewOneRightChannel As ProgressBar
@@ -953,6 +866,12 @@ Partial Class MainWindow
     Friend WithEvents PlaylistTimer As Timer
     Friend WithEvents Label8 As Label
     Friend WithEvents PlaylistTimeLabel As Label
-    Friend WithEvents liveAudioConnection As ComboBox
-    Friend WithEvents liveVideoConnection As ComboBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents renderingDeviceVideoHwList As ComboBox
+    Friend WithEvents liveDeviceVideoHwList As ComboBox
+    Friend WithEvents liveDeviceAudioHwList As ComboBox
+    Friend WithEvents liveDeviceModeList As ComboBox
 End Class

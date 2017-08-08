@@ -2,6 +2,7 @@
     Private WithEvents player As MultiMediaSDK.Player
     Private WithEvents cg As MultiMediaSDK.CharacterGenerator
     Private WithEvents renderer As MultiMediaSDK.renderer
+    Private WithEvents renderingDevice As MultiMediaSDK.RenderingDevice
     Private WithEvents mixer As MultiMediaSDK.Mixer
     Private WithEvents live As MultiMediaSDK.LiveManager
     Private WithEvents liveDevice As MultiMediaSDK.LiveDevice
@@ -20,11 +21,16 @@
     Dim playerPaused As Boolean
     Dim cgID As Dictionary(Of String, String)
 
+    Dim logs As ArrayList
+
     Private Sub MainWindow_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         player.ShutDown()
         cg.ShutDown()
     End Sub
     Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        logs = New ArrayList
+        LogTimer.Start()
+
         currTrackDuration = 0
         playlistInfo = New MultiMediaSDK.PlaylistInfo
         mediaInfo = New MultiMediaSDK.MediaInfo
@@ -242,8 +248,8 @@
 
         mixer.AddSource(player, 0)
         mixer.SetEnable(player, True)
-        mixer.AddSource(cg, 2)
-        mixer.SetEnable(cg, True)
+        'mixer.AddSource(cg, 2)
+        'mixer.SetEnable(cg, True)
 
         mixer.AddRenderer(renderer)
     End Sub
@@ -259,15 +265,15 @@
         Me.Cursor = Cursors.WaitCursor
         Log("Booting system...")
         InitializePlayer()
-        Log("Player                 [OK]")
+        Log("Player                     [OK]")
         InitializeCG()
-        Log("CG                     [OK]")
+        Log("CG                          [OK]")
         InitializeLive()
-        Log("Live                   [OK]")
+        Log("Live                        [OK]")
         InitializeRenderer()
         Log("Renderer               [OK]")
         InitializeMixer()
-        Log("Mixer                  [OK]")
+        Log("Mixer                     [OK]")
         Log("System Ready.")
         VUMeterTimer.Start()
         VUMeterDecayTimer.Start()
@@ -384,7 +390,7 @@
     Private Sub startRenderingDevice_Click(sender As Object, e As EventArgs) Handles startRenderingDevice.Click
         Dim index = renderingDevices.SelectedIndex
         Dim device = CType(renderingDevicesList.Item(index), MultiMediaSDK.RenderingDevice)
-
+        renderingDevice = device
         Dim settings = New MultiMediaSDK.RenderingDeviceSettings
         settings.audio_hw = renderingDeviceAudioHwList.Text
         settings.video_hw = renderingDeviceVideoHwList.Text
@@ -537,10 +543,8 @@
         End If
     End Sub
     Private Sub Log(str As String)
-        LogWindow.Items.Insert(0, str)
-        If LogWindow.Items.Count > 500 Then
-            LogWindow.Items.RemoveAt(LogWindow.Items.Count - 1)
-        End If
+        str = "[*]" & str
+        logs.Add(str)
     End Sub
 
     Private Sub player_OnEvent(ByRef eventName As String, ByRef eventParams As String) Handles player.OnEvent
@@ -553,6 +557,14 @@
     End Sub
     Private Sub mixer_OnEvent(ByRef eventName As String, ByRef eventParams As String) Handles mixer.OnEvent
         Dim str = "[MIXER EVENT] Name " & eventName & " -> " & eventParams
+        Log(str)
+    End Sub
+    Private Sub liveDevice_OnEvent(ByRef eventName As String, ByRef eventParams As String) Handles liveDevice.OnEvent
+        Dim str = "[LIVEDEVICE EVENT] Name " & eventName & " -> " & eventParams
+        Log(str)
+    End Sub
+    Private Sub renderingDevice_OnEvent(ByRef eventName As String, ByRef eventParams As String) Handles renderingDevice.OnEvent
+        Dim str = "[RENDERINGDEVICE EVENT] Name " & eventName & " -> " & eventParams
         Log(str)
     End Sub
     Private Sub CGPlayAnimation_Click(sender As Object, e As EventArgs) Handles CGPlayAnimation.Click
@@ -599,6 +611,7 @@
     Private Sub StartSource_Click(sender As Object, e As EventArgs) Handles StartSource.Click
         Dim index = SourceList.SelectedIndex
         Dim device = CType(liveSources.Item(index), MultiMediaSDK.LiveDevice)
+        liveDevice = device
 
         Dim settings = New MultiMediaSDK.LiveDeviceSettings
         settings.audio_hw = liveDeviceAudioHwList.Text
@@ -709,4 +722,16 @@
         Dim ts As TimeSpan = TimeSpan.FromMilliseconds(currTrackDuration)
         PlaylistTimeLabel.Text = ts.ToString("hh\:mm\:ss")
     End Sub
+
+    Private Sub LogTimer_Tick(sender As Object, e As EventArgs) Handles LogTimer.Tick
+        For Each s In logs
+            LogWindow.Items.Insert(0, s)
+            If LogWindow.Items.Count > 500 Then
+                LogWindow.Items.RemoveAt(LogWindow.Items.Count - 1)
+            End If
+        Next
+        logs.Clear()
+    End Sub
+
+
 End Class

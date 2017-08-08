@@ -92,6 +92,7 @@ Partial Class MainWindow
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.LogTimer = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1.SuspendLayout()
         CType(Me.LiveServerIndicator, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CGServerIndicator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -746,6 +747,10 @@ Partial Class MainWindow
         Me.Label12.TabIndex = 34
         Me.Label12.Text = "Mixer"
         '
+        'LogTimer
+        '
+        Me.LogTimer.Interval = 500
+        '
         'MainWindow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -874,4 +879,5 @@ Partial Class MainWindow
     Friend WithEvents liveDeviceVideoHwList As ComboBox
     Friend WithEvents liveDeviceAudioHwList As ComboBox
     Friend WithEvents liveDeviceModeList As ComboBox
+    Friend WithEvents LogTimer As Timer
 End Class

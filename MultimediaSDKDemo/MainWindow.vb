@@ -396,6 +396,13 @@
         settings.video_hw = renderingDeviceVideoHwList.Text
         settings.mode = OutputFormatList.Text
 
+        Dim param(20) As MultiMediaSDK.Param
+
+        param(0) = New MultiMediaSDK.Param
+        param(0).key = "mrl"
+        param(0).value = settings.audio_hw
+        settings.params = param
+
         retErr = device.Initialize(settings)
 
         If retErr Then

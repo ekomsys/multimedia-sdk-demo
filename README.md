@@ -4,13 +4,13 @@ This application can be used as a sample application to evaluate Multimedia SDK 
 
 ## Prerequisites
 
-You will need visual studio 2015 and above to compile this application. In case you are just evaluating the [SDK](https://ekomsys.com/downloads/ekomsys-multimedia-sdk-4.0-x64.exe), please download the SDK from website and use the pre built binary MultimediaSDKDemo.
+You will need visual studio 2015 and above to compile this application. In case you are just evaluating the [SDK (v5.0)](https://ekomsys.com/downloads/ekomsys-multimedia-sdk-5.0-x64.exe), please download the SDK from website and use the pre built binary MultimediaSDKDemo.
 
 
 ## Getting Started
 
 * Clone the repository on your machine. 
-* Download the SDK from ekomsys website - [Ekomsys Multimedia SDK](https://ekomsys.com/downloads/ekomsys-multimedia-sdk-4.0-x64.exe)
+* Download the SDK from ekomsys website - [Ekomsys Multimedia SDK - v5.0](https://ekomsys.com/downloads/ekomsys-multimedia-sdk-5.0-x64.exe)
 * While installing make sure you keep the checkbox to register the COM components.
 * Open .sln file in visual studio and compile the project
 * Copy the output binary to the bin/x64 directory of SDK and run the binary.
@@ -28,7 +28,7 @@ This demo comes with a demo license and cannot be used in production. To deploy 
 
 ## Built With
 
-* [Visual Studio 2015](https://www.visualstudio.com/vs/community/) - IDE to develop VB.NET applications.
+* [Visual Studio 2017](https://www.visualstudio.com/vs/community/) - IDE to develop VB.NET applications.
 * [Ekomsys Multimedia SDK](http://ekomsys.com) - Required to build and run the application.
 
 ## Contributing

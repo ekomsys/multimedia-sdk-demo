@@ -346,8 +346,6 @@
             renderingDeviceVideoHwList.SelectedIndex = 0
             renderingDeviceVideoHwList.Update()
         End If
-
-
     End Sub
     Private Sub populateLiveDeviceInfo(dvc As MultiMediaSDK.LiveDevice)
         Dim audioHW
